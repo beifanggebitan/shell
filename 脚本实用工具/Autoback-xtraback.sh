@@ -20,7 +20,7 @@ function backup()         #创建另一个函数，用于执行备份
 {
 	if [ ${week} == "0" ];then   #如果今天是本周第一天（即英国人习惯的周日是美洲第一天）
 		$cmd --defaults-file=${mycnf} --user=${user} --password=${passwd} ${datadir}&>${logdir}/${Time}-log  #这个是备份命令的执行参数
-		[ $? -eq 0 ] && stat=`tail -1 ${logdir}/${Time}-log |awk '{print $4}'`   #通过与或执行简单的判断，如果上面的执行成功的，就会得到相应的日志，，aek进行空格分段，取第四段，这个可以检查awk用法
+		[ $? -eq 0 ] && stat=`tail -1 ${logdir}/${Time}-log |awk '{print $4}'`   #注意这里是反引号执行获取stat，通过与或执行简单的判断，如果上面的执行成功的，就会得到相应的日志，，aek进行空格分段，取第四段，这个可以检查awk用法
 		if [ "${stat}" == "OK!" ];then        #如果上面那条命令获取的stat参数是OK的话
 			echo "${Time} mysql backup is success!" #打印时间和这句成功的话
 		else
