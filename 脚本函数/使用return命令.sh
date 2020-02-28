@@ -9,4 +9,4 @@ function db1 {
 }
 
 db1
-echo "The new value is $?"
+echo "The new value is $?" #此处返回值就是结果，所以就是$?
